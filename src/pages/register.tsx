@@ -94,7 +94,7 @@ const RegistrationPage = (): JSX.Element => {
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       setEmail(e.target.value);
                     }}
-                    className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-white"
+                    className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
                     value={email}
                     error={emailError?.message ?? ""}
                   />
@@ -106,7 +106,7 @@ const RegistrationPage = (): JSX.Element => {
                     }}
                     value={password}
                     error={passwordError?.message ?? ""}
-                    className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-white"
+                    className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
                   />
                   <CustomButton disabled={isLoading} type="submit">
                     {isLoading && <LoadingIcon />}

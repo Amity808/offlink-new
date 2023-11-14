@@ -94,7 +94,7 @@ const LoginPage = (): JSX.Element => {
                 <CustomInput
                   type="text"
                   name="email"
-                  className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-white"
+                  className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setEmail(e.target.value);
                   }}
@@ -104,7 +104,7 @@ const LoginPage = (): JSX.Element => {
                 <CustomPasswordInput
                   type="password"
                   name="password"
-                  className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-white"
+                  className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setPassword(e.target.value);
                   }}
