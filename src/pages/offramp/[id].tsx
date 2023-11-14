@@ -58,7 +58,9 @@ const OffRamp = () => {
   if (completed)
     return <TransactionCompletedWidget id={transaction?.id ?? ""} />;
 
-  return <Preloader />;
+  return (
+    <Preloader />
+  );
 };
 
 OffRamp.getLayout = function getLayout(page: ReactElement) {

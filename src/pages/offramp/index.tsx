@@ -106,48 +106,54 @@ const OffRampPage = (): JSX.Element => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="p-10">
-        {notification.type === "error" ? (
-          <p className="text-red-900">{notification?.message}</p>
-        ) : (
-          <p className="text-green-900">{notification?.message}</p>
-        )}
+      <div className=" flex justify-center items-center h-[93vh]">
+        <div className="w-[40rem]">
+          <label htmlFor="label" className=" text-2xl mb-3 font-bold p-10">Deposit Your Stablecoin</label>
+          <form onSubmit={handleSubmit} className="p-10">
+            {notification.type === "error" ? (
+              <p className="text-red-900">{notification?.message}</p>
+            ) : (
+              <p className="text-green-900">{notification?.message}</p>
+            )}
 
-        <p className="text-red-900">{signTransactionNotification?.message}</p>
-        <CustomInput
-          type="number"
-          name="email"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            try {
-              const amount = parseInt(e.target.value);
-              setTokenAmount(amount);
-            } catch (error) {}
-          }}
-          value={tokenAmount}
-          error={tokenAmountError?.message ?? ""}
-        />
+            <p className="text-red-900">{signTransactionNotification?.message}</p>
+            <CustomInput
+              type="number"
+              name="email"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                try {
+                  const amount = parseInt(e.target.value);
+                  setTokenAmount(amount);
+                } catch (error) { }
+              }}
+              className="w-full py-3 rounded-md flex items-center px-3 bg-[#EAF0F7]"
+              value={tokenAmount}
+              error={tokenAmountError?.message ?? ""}
+            />
 
-        <p> Equivalent to {fiatAmount}</p>
+            <p> Equivalent to {fiatAmount}</p>
 
-        <div>
-          <select
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-              setFiatCurrency(e.target.value);
-            }}
-            name="fiat_currency"
-            id=""
-          >
-            <option value="ngn">Naira</option>
-            <option value="kes">Kenya Shillings</option>
-            <option value="ghc">Cedis</option>
-          </select>
+            <div>
+              <select
+                onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+                  setFiatCurrency(e.target.value);
+                }}
+                name="fiat_currency"
+                id="" className="w-full py-3 rounded-md flex items-center px-3 bg-[#EAF0F7]"
+              >
+                <option value="ngn">Naira</option>
+                <option value="kes">Kenya Shillings</option>
+                <option value="ghc">Cedis</option>
+              </select>
+            </div>
+
+            <CustomButton disabled={isLoading} type="submit">
+              {isLoading && <LoadingIcon />}
+              Offramp
+            </CustomButton>
+          </form>
         </div>
-
-        <CustomButton disabled={isLoading} type="submit">
-          {isLoading && <LoadingIcon />}
-          Offramp
-        </CustomButton>
-      </form>
+      </div>
     </>
   );
 };
