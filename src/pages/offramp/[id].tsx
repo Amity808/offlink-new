@@ -15,6 +15,7 @@ import useTransactionRefunded from "@/hooks/useTransactionRefunded";
 import TransactionReleasedWidget from "@/components/TransactionReleasedWidget";
 import TransactionRefundedWidget from "@/components/TransactionRefundedWidget";
 import TransactionCancelledWidget from "@/components/TransactionCancelled";
+import PendingLoading from "@/components/Loader/PandingLoading";
 
 const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
   ssr: false,
@@ -59,7 +60,7 @@ const OffRamp = () => {
     return <TransactionCompletedWidget id={transaction?.id ?? ""} />;
 
   return (
-    <Preloader />
+    <PendingLoading />
   );
 };
 
