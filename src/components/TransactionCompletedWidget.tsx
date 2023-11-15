@@ -14,7 +14,7 @@ const TransactionCompletedWidget = ({
         onClick={async () => {
           await acceptTransaction(id);
         }}
-      ></button>
+      >Confirm Transaction</button>
     </div>
   );
 };

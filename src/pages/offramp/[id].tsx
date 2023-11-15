@@ -39,6 +39,8 @@ const OffRamp = () => {
   const { transaction } = useGetTransactionByID(parsedID);
 
   const { accepted } = useTransactionAccepted(transaction ?? { id: "" });
+  console.log(transaction);
+  
 
   const { completed } = useTransactionCompleted(transaction ?? { id: "" });
 
@@ -52,16 +54,16 @@ const OffRamp = () => {
 
   if (refunded) return <TransactionRefundedWidget />;
 
-  if (cancelled) return <TransactionCancelledWidget />;
+  if (cancelled) return <TransactionCancelledWidget id={transaction?.orderId?.toString() ?? ""} />;
 
-  if (accepted) return <TransactionAcceptedWidget />;
+  if (accepted) return <TransactionAcceptedWidget id={transaction?.orderId?.toString() ?? ""} />;
 
   if (completed)
-    return <TransactionCompletedWidget id={transaction?.id ?? ""} />;
+    return <TransactionCompletedWidget id={transaction?.orderId?.toString() ?? ""} />;
+  // TODO: orderCancel
+  //  require(order.txStatus == _TransactionState.OPEN,"order is not open");
 
-  return (
-    <PendingLoading />
-  );
+  return <PendingLoading id={transaction?.orderId?.toString() ?? ""} />
 };
 
 OffRamp.getLayout = function getLayout(page: ReactElement) {

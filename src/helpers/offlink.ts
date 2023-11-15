@@ -46,7 +46,7 @@ export const cancelTransaction = async (id: string): Promise<any> => {
   const result = await writeContract({
     address: OFFRAMP_ADDRESS,
     abi: OfflinkABI.abi,
-    functionName: "cancelSellOrder",
+    functionName: "cancelOrder",
     args: [id],
   });
 
@@ -58,6 +58,16 @@ export const acceptTransaction = async (id: string): Promise<any> => {
     address: OFFRAMP_ADDRESS,
     abi: OfflinkABI.abi,
     functionName: "acceptOrder",
+    args: [id],
+  });
+
+  return result;
+};
+export const releaseFunds = async (id: string): Promise<any> => {
+  const result = await writeContract({
+    address: OFFRAMP_ADDRESS,
+    abi: OfflinkABI.abi,
+    functionName: "releaseFunds",
     args: [id],
   });
 
@@ -75,30 +85,43 @@ export const releaseTransaction = async (id: string): Promise<any> => {
   return result;
 };
 
+export const isTransactionOpen = async (id: string): Promise<any> => {
+  if (!id) return false;
+  const transactionState = await getTransactionState(id);
+  console.log(transactionState)
+  return transactionState[0] == 1;
+};
 export const isTransactionAccepted = async (id: string): Promise<any> => {
   if (!id) return false;
   const transactionState = await getTransactionState(id);
-
-  return transactionState == 1;
+  
+  return transactionState[0] == 2;
 };
 
 export const isTransactionCompleted = async (id: string): Promise<any> => {
   if (!id) return false;
   const transactionState = await getTransactionState(id);
 
-  return transactionState == 2;
+  return transactionState[0] == 3;
 };
 
 export const isTransactionReleased = async (id: string): Promise<any> => {
   if (!id) return false;
   const transactionState = await getTransactionState(id);
+  console.log(transactionState)
 
-  return transactionState == 3;
+  return transactionState[0] == 4;
 };
 
 export const isTransactionCancelled = async (id: string): Promise<any> => {
   if (!id) return false;
   const transactionState = await getTransactionState(id);
-
-  return transactionState == 4;
+  
+  return transactionState[0] == 5;
+};
+export const isTransactionRefund = async (id: string): Promise<any> => {
+  if (!id) return false;
+  const transactionState = await getTransactionState(id);
+  
+  return transactionState[0] == 6;
 };

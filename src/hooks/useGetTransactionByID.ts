@@ -20,6 +20,7 @@ const useGetTransactionByID = (id: string) => {
       // PENDING, OPENED, ACCEPTED, COMPLETED, RELEASE, CANCELLED, REFUNDED
 
       const _transaction = await getTransactionById(id);
+
       setTransaction(_transaction);
       stopLoading();
     };

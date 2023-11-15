@@ -49,8 +49,9 @@ const OffRampPage = (): JSX.Element => {
   const nonce = useNonce();
 
   const tokenAmountinWei = useMemo((): bigint => {
-    return parseEther(tokenAmount.toString() || "1");
+    return parseEther(tokenAmount?.toString());
   }, [tokenAmount]);
+  console.log(tokenAmountinWei)
 
   const tokenAmountError = useValidation(tokenAmount, validateAmount);
 

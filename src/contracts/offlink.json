@@ -1,5 +1,5 @@
 {
-  "address": "0xfa3D78be8358aE6cD6b97d3193b3744500CDECcB",
+  "address": "0xa58fd33B5Fd02793160ED4277e9a63C612Fa9a3e",
   "abi": [
     {
       "inputs": [
@@ -539,6 +539,25 @@
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "orderId",
+          "type": "uint256"
+        }
+      ],
+      "name": "completeOrder",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "bytes32",
           "name": "currency",
           "type": "bytes32"
@@ -819,6 +838,25 @@
           "internalType": "bool",
           "name": "",
           "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "orderId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transactionState",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
