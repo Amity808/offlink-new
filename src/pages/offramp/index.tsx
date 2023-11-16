@@ -90,9 +90,9 @@ const OffRampPage = (): JSX.Element => {
 
     try {
       const orderId = await createTransaction(response.signedTransaction);
-      console.log(db.transactions);
+      console.log(orderId)
       await db.transactions.add({
-        orderId: orderId,
+        orderId: orderId.toString(),
         id: response.transactionId,
       });
       setSuccessNotification("order placed successfully");

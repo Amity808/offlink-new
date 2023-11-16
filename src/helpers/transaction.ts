@@ -18,3 +18,12 @@ export const getRecentTransactions = async (): Promise<
     return transaction.data;
   } catch (e) {}
 };
+
+export const getAllTransaction = async (
+  pageId: string, resultNo: string, status: string
+): Promise<any | undefined> => {
+  try {
+    const transaction = await axios().get(`transaction-listing?page=${pageId}&perPage=${resultNo}&status=${status}`);
+    return transaction.data;
+  } catch (e) {}
+};

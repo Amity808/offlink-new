@@ -1,5 +1,5 @@
 {
-  "address": "0xa58fd33B5Fd02793160ED4277e9a63C612Fa9a3e",
+  "address": "0x328a47A16dF7936d3E17274E233D822D2A7DA729",
   "abi": [
     {
       "inputs": [
@@ -494,7 +494,7 @@
       ],
       "name": "adminReleaseFunds",
       "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {
@@ -745,7 +745,13 @@
         }
       ],
       "name": "placeSellOrder",
-      "outputs": [],
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
       "stateMutability": "nonpayable",
       "type": "function"
     },
@@ -759,7 +765,7 @@
       ],
       "name": "releaseFunds",
       "outputs": [],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {

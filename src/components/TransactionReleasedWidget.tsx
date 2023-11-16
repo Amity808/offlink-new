@@ -6,9 +6,9 @@ const TransactionReleasedWidget = (): JSX.Element => {
     <section className="h-screen bg-[#8981b1]">
         <div className="w-full h-full flex items-center justify-center flex-col">
         <LoadingIcon />
-        <p className="text-white text-2xl">Fund released, transaction completed. Kindly check your wallet to confim payment</p>
+        <p className="text-white text-2xl">Transaction completed. Kindly check your wallet to confim payment</p>
         <p className="text-white text-2xl">Thanks for chosing Offlink. Do you like to perform another transaction?</p>
-        <Link href="/" className=" py-1 px-3 bg-white text-[7b64f2] rounded-lg">Home</Link>
+        <Link href="/offramp" className=" py-1 px-3 bg-white text-[7b64f2] rounded-lg mt-3">Click here</Link>
       </div>
     </section>
   );

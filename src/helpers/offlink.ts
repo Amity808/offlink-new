@@ -1,8 +1,9 @@
 import { getContract } from "@wagmi/core";
 import { erc20ABI } from "wagmi";
 import OfflinkABI from "@/contracts/offlink.json";
+import { useWaitForTransaction } from "wagmi";
 
-import { readContract, writeContract } from "@wagmi/core";
+import { readContract, writeContract, waitForTransaction } from "@wagmi/core";
 import { OFFRAMP_ADDRESS } from "./constants";
 
 export const OffRampContract = getContract({
@@ -32,14 +33,17 @@ export const getTransactionState = async (id: string): Promise<any> => {
 };
 
 export const createTransaction = async (params: Array<any>): Promise<any> => {
-  const result = await writeContract({
+  const { hash} = await writeContract({
     address: OFFRAMP_ADDRESS,
     abi: OfflinkABI.abi,
     functionName: "placeSellOrder",
     args: params,
   });
-
-  return result;
+  const result = await waitForTransaction({hash})
+  console.log(result.logs[1]?.topics[1])
+  const ordercountId = result.logs[1]?.topics[1] !== undefined ? parseInt(result.logs[1]?.topics[1], 16) : 0;
+  console.log(ordercountId)
+  return ordercountId;
 };
 
 export const cancelTransaction = async (id: string): Promise<any> => {
@@ -117,7 +121,7 @@ export const isTransactionCancelled = async (id: string): Promise<any> => {
   if (!id) return false;
   const transactionState = await getTransactionState(id);
   
-  return transactionState[0] == 5;
+  return transactionState[0] == 0;
 };
 export const isTransactionRefund = async (id: string): Promise<any> => {
   if (!id) return false;

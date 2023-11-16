@@ -1,18 +1,39 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import celo from "../../../public/images/celo.png";
 import Image from "next/image";
+import { getAllTransaction } from "@/helpers/transaction";
+import Pagination from "@/helpers/pagination";
 
 
 const Transaction =  () => {
     const [txStatus, setTxStatus] = useState('open')
     const [dataFetch, setDataFetch] = useState()
-  const [error, setError] = useState("")
+    const [error, setError] = useState("")
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(20);
+    const [totalPages, setTotalPages] = useState<number>(0)
+    let perPage 
+    console.log(txStatus)
 
-  const handleSelectChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-    setTxStatus(event.target.value);
-  };
+
+  useEffect(() => {
+   const fetchTX = async () => {
+    try {
+        const response = await getAllTransaction(currentPage.toString(), itemsPerPage.toString(), txStatus)
+        // setDataFetch()
+        console.log(response)
+        setTotalPages(response?.paginationInfo?.totalPages ?? 0)
+        return response
+
+    } catch (error) {
+        
+    }
+   }
+   fetchTX()
+  }, [])
   
+  console.log(totalPages)
  
   return (
     <>
@@ -104,6 +125,10 @@ const Transaction =  () => {
             Accept
           </button>
         </div>
+        <div className=" flex justify-center items-center">
+        <Pagination page={currentPage} setPage={setCurrentPage} activePage={currentPage} pages={totalPages} visiblePaginatedBtn={5} /> 
+        </div>
+        
       </div>
     </>
   );

@@ -15,13 +15,21 @@ const useGetTransactionByID = (id: string) => {
         .where("id")
         .equals(id)
         .first();
+        console.log(transactionId)
+
+        // if(transactionId) {
+        //   setTransaction(transaction)
+        //   return
+        // }
 
       // TODO: rewrite smart contract to return orderID
       // PENDING, OPENED, ACCEPTED, COMPLETED, RELEASE, CANCELLED, REFUNDED
 
       const _transaction = await getTransactionById(id);
+      console.log(_transaction)
 
       setTransaction(_transaction);
+  
       stopLoading();
     };
 

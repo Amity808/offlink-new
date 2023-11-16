@@ -35,11 +35,12 @@ const OffRamp = () => {
 
     return id;
   }, [param]);
-
+  console.log(parsedID)
   const { transaction } = useGetTransactionByID(parsedID);
+  console.log(transaction)
 
   const { accepted } = useTransactionAccepted(transaction ?? { id: "" });
-  console.log(transaction);
+
   
 
   const { completed } = useTransactionCompleted(transaction ?? { id: "" });
@@ -54,7 +55,7 @@ const OffRamp = () => {
 
   if (refunded) return <TransactionRefundedWidget />;
 
-  if (cancelled) return <TransactionCancelledWidget id={transaction?.orderId?.toString() ?? ""} />;
+  if (cancelled) return <TransactionCancelledWidget  />;
 
   if (accepted) return <TransactionAcceptedWidget id={transaction?.orderId?.toString() ?? ""} />;
 

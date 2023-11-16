@@ -29,7 +29,7 @@ const Header = () => {
 
                 <div className="img-sec flex bg-blue-500  justify-between md:flex-row flex-col-reverse  w-full p-4 md:p-0 space-y-6 md:space-y-0">
 
-                    <div className="txt bg-yellow-500 md:w-[50%] w-full space-y-6 flex flex-col">
+                    <div className="txt  md:w-[50%] w-full space-y-6 flex flex-col">
                         <div className=' flex  w-full flex-col space-y-4 mt-6 '>
 
                             <p className='px-5 text-white text-2xl lg:text-4xl'>Get Started</p>
@@ -40,7 +40,7 @@ const Header = () => {
                                 </button></div>
                         </div>
                     </div>
-                    <div className="image bg-green-500 md:w-[50%] w-full flex items-center justify-center">
+                    <div className="image md:w-[50%] w-full flex items-center justify-center">
                         <img src={p2p.src} alt="" className="h-[15rem] object-contain" />
                     </div>
 

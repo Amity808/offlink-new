@@ -12,7 +12,7 @@ const TransactionAcceptedWidget = ({ id }: TransactionAcceptedgetPramas): JSX.El
     <section className="h-screen bg-[#8981b1]">
       <div className="w-full h-full flex items-center justify-center flex-col">
         <LoadingIcon />
-      <p className="text-white text-2xl">Transaction Accepted. Kindly confirm the transaction and make payment</p>
+      <p className="text-white text-2xl text-center">Transaction accepted by a trader. <br /> Kindly confirm the transaction and make payment</p>
       <button
         onClick={async () => {
           await releaseFunds(id);
