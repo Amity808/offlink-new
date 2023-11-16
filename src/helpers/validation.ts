@@ -1,6 +1,9 @@
 import isEmail from "validator/lib/isEmail";
+import isMobilePhone from "validator/lib/isMobilePhone";
 import isStrongPassword from "validator/lib/isStrongPassword";
 import { SUPPORTED_CURRENCIES } from "./constants";
+
+
 
 export const validateEmail = (email: string) => {
   if (!email) {
@@ -8,6 +11,14 @@ export const validateEmail = (email: string) => {
   }
   if (!isEmail(email)) {
     throw new Error("email is invalid");
+  }
+};
+export const validatePhone = (phoneNo: string) => {
+  if (!phoneNo) {
+    throw new Error("Phone number is empty");
+  }
+  if (!isMobilePhone(phoneNo)) {
+    throw new Error("phone number is invalid");
   }
 };
 

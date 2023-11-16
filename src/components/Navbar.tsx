@@ -35,6 +35,7 @@ const Navbar = () => {
                         {token ? (<>
                             <Link href="/home" className="text-white h-[2rem] flex items-center justify-center text-center">Home</Link>
                             <Link href="/offramp" className="text-white h-[2rem] flex items-center justify-center text-center">Offramp</Link>
+                            <Link href="/profile" className="text-white h-[2rem] flex items-center justify-center text-center">Profile</Link>
                         </>
                         ) : (<>
                             <Link href="/signin" className="text-white h-[2rem] flex items-center justify-center">Sign Up</Link>

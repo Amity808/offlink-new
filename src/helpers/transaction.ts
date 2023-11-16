@@ -27,3 +27,9 @@ export const getAllTransaction = async (
     return transaction.data;
   } catch (e) {}
 };
+export const getUserPorfile = async (): Promise<any | undefined> => {
+  try {
+    const transaction = await axios().get(`auth/user-profile`);
+    return transaction.data;
+  } catch (e) {}
+};

@@ -1,29 +1,32 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import celo from "../../../public/images/celo.png";
 import Image from "next/image";
 import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
+import { truuncateAddress } from "@/helpers/truncateAddress";
 
 
 const Transaction =  () => {
     const [txStatus, setTxStatus] = useState('open')
-    const [dataFetch, setDataFetch] = useState()
+    const [dataFetch, setDataFetch] = useState<any[]>([])
     const [error, setError] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(20);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
     const [totalPages, setTotalPages] = useState<number>(0)
     let perPage 
     console.log(txStatus)
 
-
+    // open, accepted,completed,refunded
   useEffect(() => {
-   const fetchTX = async () => {
+   const fetchTX = async (): Promise<any> => {
     try {
         const response = await getAllTransaction(currentPage.toString(), itemsPerPage.toString(), txStatus)
         // setDataFetch()
         console.log(response)
         setTotalPages(response?.paginationInfo?.totalPages ?? 0)
+        setDataFetch(response?.data)
+
         return response
 
     } catch (error) {
@@ -31,35 +34,44 @@ const Transaction =  () => {
     }
    }
    fetchTX()
-  }, [])
   
-  console.log(totalPages)
+  },[txStatus, currentPage])
+  
+  console.log(dataFetch)
+  console.log(currentPage);
+  
+
+  
  
   return (
     <>
       {" "}
       <div className="Trans lg:w-[80%] md:w-[95%] h-[2rem] ml-auto mr-auto mt-6 flex justify-between">
-        <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#7b64f2]">
+        <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#7b64f2] text-lg font-semibold">
           Transaction
         </p>
         <div>
-          <select value={txStatus} onChange={(e) => setTxStatus(e.target.value)} className="bg-[#b2b6ef] text-white border border-black-400 p-2 rounded-lg">
+          <select value={txStatus} onChange={(e) => setTxStatus(e.target.value)} className="bg-[#b2b6ef] text-white border border-black-400 p-2 rounded-lg font-normal text-lg">
             <option value="open">OPEN</option>
-            <option value="active">Active</option>
-            <option value="close">Close</option>
+            <option value="accepted">Accepted</option>
+            <option value="completed">Completed</option>
+            <option value="refunded">Completed</option>
           </select>
         </div>
       </div>
       <div className="main-transaction mt-6 lg:w-[80%] md:w-[95%]  ml-auto mr-auto space-y-4">
-        <div className="trans1 h-[4rem] w-full bg-[#b2b6ef]  flex items-center justify-around ">
-          <div className="logo md:w-3rem md:h-full w-[2rem] h-[2rem] rounded-lg">
+        {dataFetch.length !== 0 ? dataFetch && dataFetch.map((item: any, index) => (
+
+        <div className="trans1 h-[10rem] w-full bg-[#b2b6ef]  flex flex-col justify-center gap-4 items-center" key={item.id}>
+          <div className="trans1 h-[4rem] w-full bg-[#b2b6ef]  flex items-center justify-around ">
+          <div className="logo md:w-3rem md:h-full w-[2rem] h-[2rem] rounded-lg flex justify-center items-center">
             <Image src={celo} alt="celo" width={24} height={24} className=" w-full h-full object-contain" />
           </div>
           <div className="">
-            <p className="text-white">0x24444....rdf3</p>
+            <p className="text-white">{truuncateAddress(item.sellerAddress)}</p>
           </div>
           <div className="md:flex md:flex-col hidden">
-            <p className=" text-white">Date</p>
+            <p className=" text-white">Bank Name</p>
             <p className="text-white">21 july</p>
           </div>
           <div className="md:flex md:flex-col hidden">
@@ -68,63 +80,37 @@ const Transaction =  () => {
           </div>
           <div className="flex flex-col">
             <p className=" text-white">Amount</p>
-            <p className="text-white">+$234</p>
+            <p className="text-white">#{item.fiat_amount}</p>
           </div>
 
           <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg">
-            Accept
+            {item.status}
           </button>
         </div>
+         
+        <div className="text-white flex flex-row justify-around w-full items-center text-center">
 
-        <div className="trans1 h-[4rem] w-full bg-[#b2b6ef] flex items-center justify-around">
-          <div className="logo md:w-3rem md:h-full w-[2rem] h-[2rem] rounded-lg ">
-            <Image src={celo} alt="celo" width={24} height={24} className=" w-full h-full object-contain" />
-          </div>
-          <div className="">
-            <p className="text-white">0x24444....rdf3</p>
-          </div>
-          <div className="md:flex md:flex-col hidden">
-            <p className=" text-white">Date</p>
-            <p className="text-white">21 july</p>
-          </div>
-          <div className="md:flex md:flex-col hidden">
-            <p className=" text-white">Time</p>
-            <p className="text-white">09:00</p>
-          </div>
-          <div className="flex flex-col">
-            <p className=" text-white">Amount</p>
-            <p className="text-white">+$234</p>
-          </div>
-
-          <button className="btn md:w-[6rem] md:h-[2.5rem]  text-white w-[4rem] h-[2rem] items-center justify-center bg-[#7b64f2] rounded-lg">
-            Accept
-          </button>
+          <span>
+            <p className=" text-lg font-medium">Seller Details</p>
+          </span>
+          <span>
+            <p  className=" font-normal text-lg">Bank Name</p>
+            <p>{item.seller.bankName}</p>
+          </span>
+          <span>
+            <p  className=" font-normal text-lg">Account Number</p>
+            <p>{item.seller.bankAccount}</p>
+          </span>
+          <span>
+            <p  className=" font-normal text-lg">Phone Number</p>
+            <p>{item.seller.phone}</p>
+          </span>
         </div>
-
-        <div className="trans1 h-[4rem] w-full bg-[#b2b6ef] flex items-center justify-around ">
-          <div className="logo md:w-3rem md:h-full w-[2rem] h-[2rem] rounded-lg ">
-            <Image src={celo} alt="celo" width={24} height={24} className=" w-full h-full object-contain" />
-          </div>
-          <div className="">
-            <p className="text-white">0x24444....rdf3</p>
-          </div>
-          <div className="md:flex md:flex-col hidden">
-            <p className=" text-white">Date</p>
-            <p className="text-white">21 july</p>
-          </div>
-          <div className="md:flex md:flex-col hidden">
-            <p className=" text-white">Time</p>
-            <p className="text-white">09:00</p>
-          </div>
-          <div className="flex flex-col">
-            <p className=" text-white">Amount</p>
-            <p className="text-white">+$234</p>
-          </div>
-
-          <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] items-center justify-center text-white bg-[#7b64f2] rounded-lg">
-            Accept
-          </button>
         </div>
+        )): <p className=" text-center text-lg">Go to previous page</p>}
+
+
+        
         <div className=" flex justify-center items-center">
         <Pagination page={currentPage} setPage={setCurrentPage} activePage={currentPage} pages={totalPages} visiblePaginatedBtn={5} /> 
         </div>
