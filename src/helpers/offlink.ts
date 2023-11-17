@@ -34,7 +34,8 @@ export const getTransactionState = async (id: string): Promise<any> => {
 };
 
 export const createTransaction = async (params: Array<any>): Promise<any> => {
-  const { hash} = await writeContract({
+ try{
+ const { hash} = await writeContract({
     address: OFFRAMP_ADDRESS,
     abi: OfflinkABI.abi,
     functionName: "placeSellOrder",
@@ -45,6 +46,7 @@ export const createTransaction = async (params: Array<any>): Promise<any> => {
   const ordercountId = result.logs[1]?.topics[1] !== undefined ? parseInt(result.logs[1]?.topics[1], 16) : 0;
   console.log(ordercountId)
   return ordercountId;
+} catch (e){}
 };
 
 export const cancelTransaction = async (id: string): Promise<any> => {
