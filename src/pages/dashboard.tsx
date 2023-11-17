@@ -1,4 +1,4 @@
-'use client'
+
 import React, { ReactElement, useState } from 'react'
 import AuthMiddleware from '@/middlewares/auth/AuthMiddleware'
 import Header from '@/components/Header'
@@ -12,8 +12,7 @@ const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
   });
 
 const Dashboard = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(20);
+
     return (
         <>
             <Navbar />

@@ -6,7 +6,12 @@ import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction } from "@/helpers/offlink";
+import WagmiWrapperLayout from "@/layouts/Wagmi";
+import dynamic from "next/dynamic";
 
+const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
+  ssr: false,
+});
 
 const Transaction =  () => {
     const [txStatus, setTxStatus] = useState('open')
@@ -27,7 +32,7 @@ const Transaction =  () => {
         console.log(response)
         setTotalPages(response?.paginationInfo?.totalPages ?? 0)
         setDataFetch(response?.data)
-
+      setItemsPerPage(10)
         return response
 
     } catch (error) {
@@ -46,7 +51,9 @@ const Transaction =  () => {
  
   return (
     <>
-      {" "}
+     <WagmiWrapperLayout>
+        <ConnectLayout>
+          
       <div className="Trans lg:w-[80%] md:w-[95%] h-[2rem] ml-auto mr-auto mt-6 flex justify-between mb-5">
         <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#7b64f2] text-lg font-semibold">
           Transaction
@@ -84,17 +91,17 @@ const Transaction =  () => {
             <p className="text-white">#{item.fiat_amount}</p>
           </div>
 
-          {item.status == "OPEN" ? (
+          {/* {item.status == "OPEN" ? (
             <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg" onClick={async() => {
               await acceptTransaction(item.orderId)
             }} >
             {item.status}
           </button>
-          ) : (
+          ) : ( */}
             <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg" >
             {item.status}
           </button>
-          )} 
+          {/* // )}  */}
 
           
         </div>
@@ -127,6 +134,8 @@ const Transaction =  () => {
         </div>
         
       </div>
+        </ConnectLayout>
+     </WagmiWrapperLayout>
     </>
   );
 };

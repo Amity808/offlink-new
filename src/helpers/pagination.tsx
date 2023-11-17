@@ -43,7 +43,7 @@ function Pagination({ page, pages, activePage, visiblePaginatedBtn, setPage }: P
 
       {/* <div className=' flex gap'> */}
       {pageNumbers.map((p, idx) => (
-          <div className=' flex w-[4rem] gap-3'>
+          <div className=' flex w-[4rem] gap-3' key={idx}>
             <CustomButton
           key={idx}
           className='w-[2rem] flex gap-3'
