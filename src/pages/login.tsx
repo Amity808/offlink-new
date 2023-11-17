@@ -126,7 +126,7 @@ const LoginPage = (): JSX.Element => {
             </div>
 
             <div className="w-full px-4 md:px-0 mt-6 lg:mt-16 md:mt-10 flex justify-between items-center">
-              <p className="text-xl font-semibold">Don't have an account?</p>
+              <p className="text-xl font-semibold">Don&apos;t have an account?</p>
               <Link href={`/register`} className="text-[#7b64f2] text-xl font-semibold">
                 SignUp
               </Link>
