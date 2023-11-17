@@ -34,7 +34,7 @@ const Profile = () => {
     <div>
       
         <div className=" flex justify-center items-center flex-col">
-      <div className=" w-full h-[300px] max-md:h-[250px] max-sm:h-[200px] bg-[#b2b6ef]">
+      <div className=" w-full h-[300px] max-md:h-[250px] max-sm:h-[200px] bg-[#4461F2]">
         <div className=" relative flex justify-center items-center mt-[15rem] max-md:mt-[12rem] max-sm:mt-[140px] rounded-2xl">
           <div className=' rounded-full '>
           {identiconAddress(`0x${address}` , 30)}

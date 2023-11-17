@@ -57,7 +57,7 @@ const UpdateProfile = () => {
         <button
           type="button"
           onClick={() => setToggle(true)}
-          className="inline-block ml-4 px-6 py-2.5 border-[#7b64f2] text-white font-medium text-md leading-tight rounded-2xl shadow-md hover:border-[#7b64f2] focus:shadow-lg focus:outline-none focus:ring-0 bg-[#7b64f2] transition duration-150 ease-in-out"
+          className="inline-block ml-4 px-6 py-2.5 border-[#7b64f2] text-white font-medium text-md leading-tight rounded-2xl shadow-md hover:border-[#7b64f2] focus:shadow-lg focus:outline-none focus:ring-0 bg-[#4461F2] transition duration-150 ease-in-out"
           data-bs-toggle="modal"
           data-bs-target="#exampleModalCenter"
         >

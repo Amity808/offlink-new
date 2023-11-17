@@ -35,7 +35,7 @@ const Navbar = () => {
 
                     {/* <!-- Navbar Links - Desktop --> */}
                     <div className="hidden md:flex space-x-6">
-                        {isAuthenticated ? (<>
+                        {token ? (<>
                             <Link href="/dashboard" className="text-white h-[2rem] flex items-center justify-center text-center">Dashboard</Link>
                             <Link href="/offramp" className="text-white h-[2rem] flex items-center justify-center text-center">Offramp</Link>
                             <Link href="/profile" className="text-white h-[2rem] flex items-center justify-center text-center">Profile</Link>
