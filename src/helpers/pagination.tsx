@@ -28,7 +28,7 @@ function Pagination({ page, pages, activePage, visiblePaginatedBtn, setPage }: P
   }
 
   return (
-    <div className="w-fit mt-3 rounded-[20px] p-1 flex items-center justify-between gap-6 bg-white-200">
+    <div className="w-fit mt-3 rounded-[20px] p-1 flex items-center justify-between gap-4 bg-white-200">
       <div className=' '>
       <CustomButton
         onClick={() => setPage(Math.max(1, page - 1))}
