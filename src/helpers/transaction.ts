@@ -6,8 +6,11 @@ export const getTransactionById = async (
 ): Promise<Transaction | undefined> => {
   try {
     const transaction = await axios().get(`single-transaction?txid=${id}`);
+    console.log(transaction.data)
     return transaction.data;
-  } catch (e) {}
+  } catch (e) {
+    console.log(e)
+  }
 };
 
 export const getRecentTransactions = async (): Promise<

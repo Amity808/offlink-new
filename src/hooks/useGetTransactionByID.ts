@@ -11,21 +11,22 @@ const useGetTransactionByID = (id: string) => {
   useEffect(() => {
     startLoading();
     const _getTransanctionById = async () => {
-      const transactionId = await db.transactions
+  
+      let _transaction = await db.transactions
         .where("id")
         .equals(id)
         .first();
-        console.log(transactionId)
+        console.log(_transaction)
 
-        // if(transactionId) {
-        //   setTransaction(transaction)
-        //   return
-        // }
+        if(_transaction) {
+          setTransaction(_transaction)
+          return
+        }
 
       // TODO: rewrite smart contract to return orderID
       // PENDING, OPENED, ACCEPTED, COMPLETED, RELEASE, CANCELLED, REFUNDED
 
-      const _transaction = await getTransactionById(id);
+      _transaction = await getTransactionById(id);
       console.log(_transaction)
 
       setTransaction(_transaction);
@@ -35,6 +36,8 @@ const useGetTransactionByID = (id: string) => {
 
     _getTransanctionById();
   }, []);
+
+  // console.log(transaction)
   return { isLoading, transaction };
 };
 

@@ -1,5 +1,5 @@
 {
-  "address": "0x328a47A16dF7936d3E17274E233D822D2A7DA729",
+  "address": "0xe49374CcD66D61d122590D6063F9a4d650C7C803",
   "abi": [
     {
       "inputs": [
@@ -132,6 +132,19 @@
         }
       ],
       "name": "OrderCancelled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "orderId",
+          "type": "uint256"
+        }
+      ],
+      "name": "OrderCompleted",
       "type": "event"
     },
     {

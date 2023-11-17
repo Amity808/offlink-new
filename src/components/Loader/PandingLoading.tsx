@@ -14,7 +14,7 @@ const PendingLoading = ({id}: CancelTransactiondWidgetParams): JSX.Element => {
       <button
       onClick={async () => {
         await cancelTransaction(id);
-      }}
+      }} className="py-1 px-3 bg-white text-[7b64f2] rounded-lg mt-3"
       >Cancel Transaction</button>
       </div>
     </section>

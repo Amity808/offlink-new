@@ -1,3 +1,4 @@
+'use client'
 import { getContract } from "@wagmi/core";
 import { erc20ABI } from "wagmi";
 import OfflinkABI from "@/contracts/offlink.json";
@@ -47,35 +48,47 @@ export const createTransaction = async (params: Array<any>): Promise<any> => {
 };
 
 export const cancelTransaction = async (id: string): Promise<any> => {
-  const result = await writeContract({
-    address: OFFRAMP_ADDRESS,
-    abi: OfflinkABI.abi,
-    functionName: "cancelOrder",
-    args: [id],
-  });
-
-  return result;
+  try {
+    const result = await writeContract({
+      address: OFFRAMP_ADDRESS,
+      abi: OfflinkABI.abi,
+      functionName: "cancelOrder",
+      args: [id],
+    });
+  
+    return result;
+  } catch (error) {
+    
+  }
 };
 
 export const acceptTransaction = async (id: string): Promise<any> => {
-  const result = await writeContract({
-    address: OFFRAMP_ADDRESS,
-    abi: OfflinkABI.abi,
-    functionName: "acceptOrder",
-    args: [id],
-  });
-
-  return result;
+  try {
+    const result = await writeContract({
+      address: OFFRAMP_ADDRESS,
+      abi: OfflinkABI.abi,
+      functionName: "acceptOrder",
+      args: [id],
+    });
+  
+    return result;
+  } catch (error) {
+    console.log(error)
+  }
 };
 export const releaseFunds = async (id: string): Promise<any> => {
-  const result = await writeContract({
-    address: OFFRAMP_ADDRESS,
-    abi: OfflinkABI.abi,
-    functionName: "releaseFunds",
-    args: [id],
-  });
-
-  return result;
+  try{
+    const result = await writeContract({
+      address: OFFRAMP_ADDRESS,
+      abi: OfflinkABI.abi,
+      functionName: "releaseFunds",
+      args: [id],
+    });
+  
+    return result;
+  } catch(error) {
+    console.log(error)
+  }
 };
 
 export const releaseTransaction = async (id: string): Promise<any> => {

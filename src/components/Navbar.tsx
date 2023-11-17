@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import logo from "../../public/logo.svg"
 import Link from 'next/link'
+import useAuthenticated from '@/hooks/useAuthenticated'
 import Image from 'next/image'
 
 const Navbar = () => {
@@ -16,9 +17,11 @@ const Navbar = () => {
         setToggle(!toggle);
     };
 
+    const { authenticated: isAuthenticated} = useAuthenticated()
+
     return (
         <>
-            <nav className="bg-[#b2b6ef] py-4 px-4 ">
+            <nav className="bg-[#4461F2] py-4 px-4 ">
                 <div className="container mx-auto flex justify-between items-center ">
 
                     {/* <!-- Logo --> */}
@@ -32,8 +35,8 @@ const Navbar = () => {
 
                     {/* <!-- Navbar Links - Desktop --> */}
                     <div className="hidden md:flex space-x-6">
-                        {token ? (<>
-                            <Link href="/home" className="text-white h-[2rem] flex items-center justify-center text-center">Home</Link>
+                        {isAuthenticated ? (<>
+                            <Link href="/dashboard" className="text-white h-[2rem] flex items-center justify-center text-center">Dashboard</Link>
                             <Link href="/offramp" className="text-white h-[2rem] flex items-center justify-center text-center">Offramp</Link>
                             <Link href="/profile" className="text-white h-[2rem] flex items-center justify-center text-center">Profile</Link>
                         </>

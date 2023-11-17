@@ -1,10 +1,11 @@
-'use client'
+// 'use client'
 import React, { useState, useEffect, useCallback } from "react";
 import celo from "../../../public/images/celo.png";
 import Image from "next/image";
 import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
+import { acceptTransaction } from "@/helpers/offlink";
 
 
 const Transaction =  () => {
@@ -46,7 +47,7 @@ const Transaction =  () => {
   return (
     <>
       {" "}
-      <div className="Trans lg:w-[80%] md:w-[95%] h-[2rem] ml-auto mr-auto mt-6 flex justify-between">
+      <div className="Trans lg:w-[80%] md:w-[95%] h-[2rem] ml-auto mr-auto mt-6 flex justify-between mb-5">
         <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#7b64f2] text-lg font-semibold">
           Transaction
         </p>
@@ -55,7 +56,7 @@ const Transaction =  () => {
             <option value="open">OPEN</option>
             <option value="accepted">Accepted</option>
             <option value="completed">Completed</option>
-            <option value="refunded">Completed</option>
+            <option value="released">Released</option>
           </select>
         </div>
       </div>
@@ -83,9 +84,19 @@ const Transaction =  () => {
             <p className="text-white">#{item.fiat_amount}</p>
           </div>
 
-          <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg">
+          {item.status == "OPEN" ? (
+            <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg" onClick={async() => {
+              await acceptTransaction(item.orderId)
+            }} >
             {item.status}
           </button>
+          ) : (
+            <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg" >
+            {item.status}
+          </button>
+          )} 
+
+          
         </div>
          
         <div className="text-white flex flex-row justify-around w-full items-center text-center">

@@ -39,7 +39,7 @@ export const validatePassword = (password: string) => {
 };
 
 export const validateAmount = (amount: number) => {
-  if (!amount) throw new Error("amount is not a number");
+  if (!amount) throw new Error("amount should be in number");
   if (amount <= 0) throw new Error("amount must be greater than zero");
 };
 

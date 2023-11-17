@@ -5,10 +5,15 @@ import Header from '@/components/Header'
 import Navbar from "../components/Navbar"
 import Transaction from '@/components/form/Transaction'
 import WagmiWrapperLayout from '@/layouts/Wagmi'
+import dynamic from 'next/dynamic'
+
+const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
+    ssr: false,
+  });
 
 const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(20);
+    const [itemsPerPage, setItemsPerPage] = useState(20);
     return (
         <>
             <Navbar />
@@ -22,9 +27,13 @@ const Dashboard = () => {
 
 Dashboard.getLayout = function getLayout(page: ReactElement) {
     return (
-        <AuthMiddleware>
-            {page}
-        </AuthMiddleware>
+        <WagmiWrapperLayout>
+            <AuthMiddleware>
+                <ConnectLayout>
+                    {page}
+                </ConnectLayout>
+            </AuthMiddleware>
+        </WagmiWrapperLayout>
     )
 }
 
