@@ -76,7 +76,7 @@ const Navbar = () => {
                         className="text-white absolute top-4 right-4"
                         onClick={toggleMenu}
                     >
-                        <p>X</p>
+                        <p className=' text-xl font-bold'>X</p>
                     </button>
                     <Link href="/" className="block text-xl text-center">Home</Link>
                     <Link href="/signup" className="block  text-xl text-center">Sign Up</Link>
