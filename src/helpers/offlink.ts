@@ -95,6 +95,7 @@ export const releaseFunds = async (id: string): Promise<any> => {
 };
 
 export const releaseTransaction = async (id: string): Promise<any> => {
+  try {
   const result = await writeContract({
     address: OFFRAMP_ADDRESS,
     abi: OfflinkABI.abi,
@@ -103,6 +104,8 @@ export const releaseTransaction = async (id: string): Promise<any> => {
   });
 
   return result;
+  } catch(e) {}
+
 };
 
 export const isTransactionOpen = async (id: string): Promise<any> => {
