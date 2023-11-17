@@ -1,4 +1,3 @@
-
 import React, { ReactElement, useState } from 'react'
 import AuthMiddleware from '@/middlewares/auth/AuthMiddleware'
 import Header from '@/components/Header'
@@ -7,15 +6,15 @@ import Transaction from '@/components/form/Transaction'
 import WagmiWrapperLayout from '@/layouts/Wagmi'
 import dynamic from 'next/dynamic'
 
+
 const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
     ssr: false,
-  });
+});
 
 const Dashboard = (): JSX.Element => {
 
     return (
         <>
-            <Navbar />
             <div className=' md:px-2 sm:px-2 max-sm:px-2 '>
                 {/* <Header /> */}
                 <Transaction />
@@ -29,6 +28,7 @@ Dashboard.getLayout = function getLayout(page: ReactElement) {
         <WagmiWrapperLayout>
             <AuthMiddleware>
                 <ConnectLayout>
+                    <Navbar />
                     {page}
                 </ConnectLayout>
             </AuthMiddleware>

@@ -16,7 +16,7 @@ const TransactionAcceptedWidget = ({ id }: TransactionAcceptedgetPramas): JSX.El
       <button
         onClick={async () => {
           await releaseFunds(id);
-        }} className=" text-white bg-[] mt-5 p-3"
+        }} className=" py-1 px-3 bg-white text-[7b64f2] rounded-lg mt-3"
       >Confirm Transaction</button>
       </div>
     </section>

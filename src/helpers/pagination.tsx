@@ -28,7 +28,7 @@ function Pagination({ page, pages, activePage, visiblePaginatedBtn, setPage }: P
   }
 
   return (
-    <div className="w-fit mt-3 rounded-[20px] p-1 flex items-center justify-between gap-2 bg-white-200">
+    <div className="w-fit mt-3 rounded-[20px] p-1 flex items-center justify-between gap-6 bg-white-200">
       <div className=' '>
       <CustomButton
         onClick={() => setPage(Math.max(1, page - 1))}
@@ -43,10 +43,10 @@ function Pagination({ page, pages, activePage, visiblePaginatedBtn, setPage }: P
 
       {/* <div className=' flex gap'> */}
       {pageNumbers.map((p, idx) => (
-          <div className=' flex w-[4rem] gap-3' key={idx}>
+          <div className=' flex w-[4rem] ' key={idx}>
             <CustomButton
           key={idx}
-          className='w-[2rem] flex gap-3'
+          className='w-[3rem] flex gap-3'
           onClick={() => setPage(p)}
         >
           {p}

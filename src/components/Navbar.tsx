@@ -27,10 +27,14 @@ const Navbar = () => {
                     {/* <!-- Logo --> */}
                     <div className="flex items-center space-x-2">
                         <div>
+                            <Link href="/">
+                            
                             <Image src={logo} width={34} height={34} alt='logo' />
+                            </Link>
                         </div>
                         <p className="text-white text-xl font-semibold">OFFLINK</p>
                     </div>
+                    
 
 
                     {/* <!-- Navbar Links - Desktop --> */}
