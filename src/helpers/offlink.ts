@@ -76,6 +76,7 @@ export const acceptTransaction = async (id: string): Promise<any> => {
     console.log(error)
   }
 };
+
 export const releaseFunds = async (id: string): Promise<any> => {
   try{
     const result = await writeContract({

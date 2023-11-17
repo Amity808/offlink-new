@@ -10,7 +10,7 @@ const ConnectLayout = ({ children }: PropsWithChildren) => {
 
   if (isDisconnected) {
     return (
-      <section className="h-[100vh] bg-red-200">
+      <section className=" h-screen bg-red-200">
         <div className="w-full h-full flex items-center justify-center">
           <ConnectButton />
         </div>

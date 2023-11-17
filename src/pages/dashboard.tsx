@@ -11,7 +11,7 @@ const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
     ssr: false,
   });
 
-const Dashboard = () => {
+const Dashboard = (): JSX.Element => {
 
     return (
         <>
