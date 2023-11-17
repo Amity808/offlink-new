@@ -94,7 +94,7 @@ const UpdateProfile = () => {
                       onChange={(e) => {
                         setFirstname(e.target.value);
                       }}
-                      error="nil"
+                      error=""
                       required
                       type="text"
                       className="w-full bg-white p-2 mt-2 mb-3 border-2 border-[#7b64f2]  rounded-lg"
@@ -104,14 +104,14 @@ const UpdateProfile = () => {
                       onChange={(e) => {
                         setOtherName(e.target.value);
                       }}
-                      error="Nill"
+                      error=""
                       required
                       type="text"
                       className="w-full  p-2 mt-2 mb-3 border-2 border-[#7b64f2] rounded-lg"
                     />
                     <label>Surname</label>
                     <CustomInput
-                    error="nill"
+                    error=""
                       onChange={(e) => {
                         setSurname(e.target.value);
                       }}
@@ -122,7 +122,7 @@ const UpdateProfile = () => {
 
                     <label>Bank Name</label>
                     <CustomInput
-                    error="nill"
+                    error=""
                       onChange={(e) => {
                         setBankName(e.target.value);
                       }}
@@ -136,7 +136,7 @@ const UpdateProfile = () => {
                       onChange={(e) => {
                         setBankAccount(e.target.value);
                       }}
-                      error="nill"
+                      error=""
                       required
                       type="text"
                       className="w-full  p-2 mt-2 mb-3 border-2 border-[#7b64f2] rounded-lg"
