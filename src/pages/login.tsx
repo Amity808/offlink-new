@@ -10,6 +10,7 @@ import NotAuthMiddleware from "@/middlewares/auth/NotAuthMiddleware";
 import { useRouter } from "next/router";
 import Auth from "@/layouts/Auth";
 import Link from "next/link";
+import Image from "next/image";
 
 import { useCallback, useState } from "react";
 import type { ReactElement } from "react";
@@ -73,7 +74,7 @@ const LoginPage = (): JSX.Element => {
               </div>
 
               <div className="image md:w-[50%] w-full  h-full hidden md:block">
-                <img
+                <Image
                   src={"/exchangenew.png"}
                   alt="exchange"
                   className="object-contain md:h-[25rem] h-[15rem]"

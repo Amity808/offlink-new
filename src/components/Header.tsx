@@ -41,7 +41,7 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="image md:w-[50%] w-full flex items-center justify-center">
-                        <img src={p2p.src} alt="" className="h-[15rem] object-contain" />
+                        <Image src={p2p.src} alt="" className="h-[15rem] object-contain" />
                     </div>
 
 
