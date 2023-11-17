@@ -16,7 +16,6 @@ const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
 const Transaction =  () => {
     const [txStatus, setTxStatus] = useState('open')
     const [dataFetch, setDataFetch] = useState<any[]>([])
-    const [error, setError] = useState("")
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [totalPages, setTotalPages] = useState<number>(0)
@@ -41,7 +40,7 @@ const Transaction =  () => {
    }
    fetchTX()
   
-  },[txStatus, currentPage])
+  },[txStatus, currentPage, itemsPerPage])
   
   console.log(dataFetch)
   console.log(currentPage);
