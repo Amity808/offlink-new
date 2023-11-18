@@ -7,10 +7,10 @@ import { useWaitForTransaction } from "wagmi";
 import { readContract, writeContract, waitForTransaction } from "@wagmi/core";
 import { OFFRAMP_ADDRESS } from "./constants";
 
-export const OffRampContract = getContract({
-  address: OFFRAMP_ADDRESS,
-  abi: erc20ABI,
-});
+// export const OffRampContract = getContract({
+//   address: OFFRAMP_ADDRESS,
+//   abi: erc20ABI,
+// });
 
 export const getOrderCount = async (): Promise<any> => {
   const result = await readContract({

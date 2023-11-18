@@ -89,17 +89,17 @@ const Transaction =  () => {
           </div>
           
 
-          {/* {item.status == "OPEN" ? (
+          {item.status == "OPEN" ? (
             <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#7b64f2] rounded-lg" onClick={async() => {
               await acceptTransaction(item.orderId)
             }} >
-            {item.status}
+            Accept
           </button>
-          ) : ( */}
+          ) : (
             <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg" >
             {item.status}
           </button>
-          {/* )}  */}
+          )} 
 
         </div>
          
