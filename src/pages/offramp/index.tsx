@@ -49,7 +49,11 @@ const OffRampPage = (): JSX.Element => {
   const nonce = useNonce();
 
   const tokenAmountinWei = useMemo((): bigint => {
-    return parseEther(tokenAmount?.toString());
+    if (tokenAmount === undefined || isNaN(Number(tokenAmount))) {
+      // Handle the case when tokenAmount is not valid (e.g., set a default value)
+      return BigInt(0);
+    }
+    return parseEther(tokenAmount?.toString() || "0");
   }, [tokenAmount]);
   console.log(tokenAmountinWei)
 
