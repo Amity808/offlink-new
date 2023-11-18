@@ -25,14 +25,14 @@ const Dashboard = (): JSX.Element => {
 
 Dashboard.getLayout = function getLayout(page: ReactElement) {
     return (
-        // <WagmiWrapperLayout>
+        <WagmiWrapperLayout>
             <AuthMiddleware>
-                {/* <ConnectLayout> */}
+                <ConnectLayout>
                     <Navbar />
                     {page}
-                {/* </ConnectLayout> */}
+                </ConnectLayout>
             </AuthMiddleware>
-        // {/* </WagmiWrapperLayout> */}
+        </WagmiWrapperLayout>
     )
 }
 
