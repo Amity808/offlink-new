@@ -105,19 +105,19 @@ const Transaction =  () => {
          
         <div className="text-white flex flex-row justify-around w-full items-center text-center">
 
+          {/* <span>
+            <p className=" text-lg font-medium max-sm:hidden">Seller Details</p>
+          </span> */}
           <span>
-            <p className=" text-lg font-medium">Seller Details</p>
-          </span>
-          <span>
-            <p  className=" font-normal text-lg">Bank Name</p>
+            <p  className=" font-normal text-lg max-sm:text-sm">Bank Name</p>
             <p>{item.seller.bankName}</p>
           </span>
           <span>
-            <p  className=" font-normal text-lg">Account Number</p>
+            <p  className=" font-normal text-lg max-sm:text-sm">Account Number</p>
             <p>{item.seller.bankAccount}</p>
           </span>
           <span>
-            <p  className=" font-normal text-lg">Phone Number</p>
+            <p  className=" font-normal text-lg max-sm:text-sm">Phone Number</p>
             <p>{item.seller.phone}</p>
           </span>
         </div>
