@@ -6,7 +6,7 @@ import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction } from "@/helpers/offlink";
-import { formatNaira } from "@/helpers/formatNaira";
+// import { formatNaira } from "@/helpers/formatNaira";
 
 
 
@@ -20,7 +20,6 @@ const Transaction =  () => {
     let perPage 
     console.log(txStatus)
 
-    // open, accepted,completed,refunded
   useEffect(() => {
    const fetchTX = async (): Promise<any> => {
     try {
@@ -101,10 +100,6 @@ const Transaction =  () => {
         </div>
          
         <div className="text-white flex flex-row justify-around w-full items-center text-center">
-
-          {/* <span>
-            <p className=" text-lg font-medium max-sm:hidden">Seller Details</p>
-          </span> */}
           <span>
             <p  className=" font-normal text-lg max-sm:text-sm">Bank Name</p>
             <p>{item.seller.bankName}</p>
