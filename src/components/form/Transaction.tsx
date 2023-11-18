@@ -6,7 +6,7 @@ import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction } from "@/helpers/offlink";
-// import { formatNaira } from "@/helpers/formatNaira";
+import { formatNaira } from "@/helpers/formatNaira";
 
 
 
@@ -19,6 +19,7 @@ const Transaction =  () => {
     const [totalPages, setTotalPages] = useState<number>(0)
     let perPage 
     console.log(txStatus)
+
 
   useEffect(() => {
    const fetchTX = async (): Promise<any> => {
@@ -81,7 +82,7 @@ const Transaction =  () => {
           </div>
           <div className="flex flex-col">
             <p className=" text-white">Amount</p>
-            <p className="text-white">#{item.fiat_amount}</p>
+            <p className="text-white">#{formatNaira(item.fiat_amount)}</p>
           </div>
           
 
