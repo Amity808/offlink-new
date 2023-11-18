@@ -6,13 +6,9 @@ import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction } from "@/helpers/offlink";
-import WagmiWrapperLayout from "@/layouts/Wagmi";
-import dynamic from "next/dynamic";
 import { formatNaira } from "@/helpers/formatNaira";
 
-const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
-  ssr: false,
-});
+
 
 
 const Transaction =  () => {
@@ -53,7 +49,7 @@ const Transaction =  () => {
   return (
     <>    
       <div className="Trans lg:w-[80%] md:w-[95%] h-[2rem] ml-auto mr-auto mt-6 flex justify-between mb-5">
-        <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#7b64f2] text-lg font-semibold">
+        <p className="trans-name border-b-2 border-black-500 w-[6rem] text-[#4461F2] text-lg font-semibold">
           Transaction
         </p>
         <div>
@@ -61,7 +57,7 @@ const Transaction =  () => {
             <option value="open" className="">OPEN</option>
             <option value="accepted">Accepted</option>
             <option value="completed">Completed</option>
-            <option value="released">Released</option>
+            <option value="fundreleased">Released</option>
           </select>
         </div>
       </div>
@@ -86,7 +82,7 @@ const Transaction =  () => {
           </div>
           <div className="flex flex-col">
             <p className=" text-white">Amount</p>
-            <p className="text-white">{` #${formatNaira(item.fiat_amount)} `}</p>
+            <p className="text-white">#{item.fiat_amount}</p>
           </div>
           
 

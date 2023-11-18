@@ -7,10 +7,10 @@ import { SUPPORTED_CURRENCIES } from "./constants";
 
 export const validateEmail = (email: string) => {
   if (!email) {
-    throw new Error("email is empty");
+    throw new Error("Email is empty");
   }
   if (!isEmail(email)) {
-    throw new Error("email is invalid");
+    throw new Error("Email is invalid");
   }
 };
 export const validatePhone = (phoneNo: string) => {
@@ -18,22 +18,22 @@ export const validatePhone = (phoneNo: string) => {
     throw new Error("Phone number is empty");
   }
   if (!isMobilePhone(phoneNo)) {
-    throw new Error("phone number is invalid");
+    throw new Error("Phone number is invalid");
   }
 };
 
 export const validatePassword = (password: string) => {
   if (!password) {
-    throw new Error("password is empty");
+    throw new Error("Password is empty");
   }
 
   if (password.length < 8) {
-    throw new Error("password is too short");
+    throw new Error("Password is too short");
   }
 
   if (!isStrongPassword(password)) {
     throw new Error(
-      "password is weak - include alphanumeric characters, uppercase and symbols"
+      "Password is weak - include alphanumeric characters, uppercase and symbols"
     );
   }
 };

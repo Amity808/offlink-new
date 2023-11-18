@@ -4,9 +4,12 @@ import logo from "../../public/logo.svg"
 import Link from 'next/link'
 import useAuthenticated from '@/hooks/useAuthenticated'
 import Image from 'next/image'
+import { useRouter } from "next/router";
 
 const Navbar = () => {
     const [toggle, setToggle] = useState<Boolean>(false)
+
+    const router = useRouter()
     let token
 
     if (typeof window !== "undefined") {
@@ -18,6 +21,11 @@ const Navbar = () => {
     };
 
     const { authenticated: isAuthenticated} = useAuthenticated()
+
+    const loginout = () => {
+        localStorage.removeItem("token");
+        router.push("/")
+    }
 
     return (
         <>
@@ -43,6 +51,7 @@ const Navbar = () => {
                             <Link href="/dashboard" className="text-white h-[2rem] flex items-center justify-center text-center">Dashboard</Link>
                             <Link href="/offramp" className="text-white h-[2rem] flex items-center justify-center text-center">Offramp</Link>
                             <Link href="/profile" className="text-white h-[2rem] flex items-center justify-center text-center">Profile</Link>
+                            <button onClick={loginout} className="text-white h-[2rem] flex items-center justify-center text-center">Logout</button>
                         </>
                         ) : (<>
                             <Link href="/register" className="text-white h-[2rem] flex items-center justify-center">Sign Up</Link>

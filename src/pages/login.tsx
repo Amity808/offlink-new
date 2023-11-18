@@ -96,6 +96,7 @@ const LoginPage = (): JSX.Element => {
                   type="text"
                   name="email"
                   className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
+                  placeholder="Email"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setEmail(e.target.value);
                   }}
@@ -106,6 +107,7 @@ const LoginPage = (): JSX.Element => {
                   type="password"
                   name="password"
                   className="w-full py-2 flex items-center justify-center bg-[#7b64f2] md:mt-10 lg:mt-14 mt-6 rounded-md text-black"
+                  placeholder="Password"
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setPassword(e.target.value);
                   }}
