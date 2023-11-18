@@ -71,16 +71,22 @@ const Navbar = () => {
             {toggle && (
                 <div id="mobile-menu" className="fixed z-20 top-0  
     right-0 bottom-0 left-0 flex flex-col 
-    items-center gap-6 justify-center bg-[#b2b6ef] text-white">
+    items-center gap-6 justify-center bg-[#4461f2] text-white">
                     <button
                         className="text-white absolute top-4 right-4"
                         onClick={toggleMenu}
                     >
                         <p className=' text-xl font-bold'>X</p>
                     </button>
-                    <Link href="/" className="block text-xl text-center">Home</Link>
-                    <Link href="/register" className="block  text-xl text-center">Sign Up</Link>
-                    <Link href="/login" className="block text-xl text-center">Login</Link>
+                    {token ? (<>
+                            <Link href="/" className="text-white h-[2rem] flex items-center justify-center text-center">Home</Link>
+                            <Link href="/dashboard" className="text-white h-[2rem] flex items-center justify-center text-center">Dashboard</Link>
+                            <Link href="/offramp" className="text-white h-[2rem] flex items-center justify-center text-center">Offramp</Link>
+                            <Link href="/profile" className="text-white h-[2rem] flex items-center justify-center text-center">Profile</Link>
+                        </>
+                        ) : (<>
+                            <Link href="/register" className="text-white h-[2rem] flex items-center justify-center">Sign Up</Link>
+                            <Link href="/login" className="text-white"><button className="bn632-hover bn20">Login</button></Link></>)}
 
                 </div>
             )}
