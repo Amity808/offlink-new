@@ -8,6 +8,7 @@ import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction } from "@/helpers/offlink";
 import WagmiWrapperLayout from "@/layouts/Wagmi";
 import dynamic from "next/dynamic";
+import { formatNaira } from "@/helpers/formatNaira";
 
 const ConnectLayout = dynamic(() => import("@/layouts/Connect"), {
   ssr: false,
@@ -85,7 +86,7 @@ const Transaction =  () => {
           </div>
           <div className="flex flex-col">
             <p className=" text-white">Amount</p>
-            <p className="text-white">#{item.fiat_amount}</p>
+            <p className="text-white">#{formatNaira(item.fiat_amount)}</p>
           </div>
           
 
