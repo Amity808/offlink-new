@@ -86,7 +86,7 @@ const Transaction =  () => {
           </div>
           <div className="flex flex-col">
             <p className=" text-white">Amount</p>
-            <p className="text-white">{formatNaira(item.fiat_amount)}</p>
+            <p className="text-white">{`${formatNaira(item.fiat_amount)}`}</p>
           </div>
           
 
