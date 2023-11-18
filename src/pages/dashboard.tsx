@@ -32,7 +32,7 @@ Dashboard.getLayout = function getLayout(page: ReactElement) {
                     {page}
                 {/* </ConnectLayout> */}
             </AuthMiddleware>
-        {/* </WagmiWrapperLayout> */}
+        // {/* </WagmiWrapperLayout> */}
     )
 }
 
