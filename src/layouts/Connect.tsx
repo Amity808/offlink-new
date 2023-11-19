@@ -19,7 +19,9 @@ declare global {
 const ConnectLayout = ({ children }: PropsWithChildren) => {
   const { isConnecting, isDisconnected } = useAccount();
 
-  const {connect}  = useConnect(  )
+  const {connect}  = useConnect({
+    connector: new InjectedConnector()
+  })
 
   useEffect(() => {
     if(!window) return
