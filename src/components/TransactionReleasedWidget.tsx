@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const TransactionReleasedWidget = (): JSX.Element => {
   return (
-    <section className="h-screen bg-[#4461F2]">
+    <section className="h-screen bg-[#4461F2] text-center">
         <div className="w-full h-full text-center flex items-center justify-center flex-col">
         <LoadingIcon />
         <p className="text-white text-2xl text-center">Transaction completed. Kindly check your wallet to confim payment</p>
