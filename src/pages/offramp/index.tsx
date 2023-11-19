@@ -79,7 +79,8 @@ const OffRampPage = (): JSX.Element => {
       try {
         await getTokenApproval(OFFRAMP_ADDRESS, tokenAmountinWei.toString());
       } catch (error: any) {
-        setErrorNotification(error?.message);
+        // setErrorNotification(error?.message);
+        // TODO
         stopLoading();
         return;
       }
