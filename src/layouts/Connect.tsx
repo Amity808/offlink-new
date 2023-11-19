@@ -2,6 +2,7 @@ import { useAccount, useConnect } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Preloader from "@/components/Preloader";
 import { useEffect, type PropsWithChildren } from "react";
+import "../../pollyfills"
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
 declare global {
@@ -9,7 +10,7 @@ declare global {
     ethereum?: {
       isMiniPay?: boolean;
       request?: (...args: any[]) => Promise<void>;
-      // add other properties as needed
+      
     };
   }
  }
