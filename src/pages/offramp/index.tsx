@@ -80,7 +80,7 @@ const OffRampPage = (): JSX.Element => {
         await getTokenApproval(OFFRAMP_ADDRESS, tokenAmountinWei.toString());
       } catch (error: any) {
         // setErrorNotification(error?.message);
-        // TODO
+        // TODOL Toast contract error
         stopLoading();
         return;
       }
