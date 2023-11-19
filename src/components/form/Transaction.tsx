@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
-import { acceptTransaction } from "@/helpers/offlink";
+import { acceptTransaction, completeOrder } from "@/helpers/offlink";
 import { formatNaira } from "@/helpers/formatNaira";
 import Popup from "reactjs-popup";
 
@@ -131,15 +131,17 @@ const Transaction = () => {
                               Accept
                             </button>
                           ) : item.status == "RELEASED" ? (
-                            <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg" >
-                              {item.status}
+                            <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg max-sm:text-sm" onClick={async () => {
+                              await completeOrder(item.orderId)
+                            }} >
+                              Confirm
                             </button>
-                          ) : <button className="btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg" >
+                          ) : item.status == "COMPLETED"  ? <p>Completed</p> : <button className="btn md:w-[6rem] md:h-[2.5rem] w-[70px] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg max-sm:text-sm" >
                           {item.status}
                         </button>}
                         </td>
                       </tr>
-)) : <p className=" text-center text-lg">Go to previous page Or check the transaction status</p>}
+)) : <div className=" text-center text-lg mt-3 flex items-center justify-center">Go to previous page Or check the transaction status</div>}
                   </table>
 
                 </div>
