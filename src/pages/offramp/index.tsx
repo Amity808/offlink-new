@@ -103,8 +103,8 @@ const OffRampPage = (): JSX.Element => {
       setSuccessNotification("order placed successfully");
     } catch (error: any) {
       // setErrorNotification(error?.message);
-      stopLoading();
-      return;
+      // stopLoading();
+      // return;
     }
     stopLoading();
     navigate.push(`/offramp/${response?.transactionId}`);
