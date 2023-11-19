@@ -4,6 +4,7 @@ import Preloader from "@/components/Preloader";
 import { useEffect, type PropsWithChildren } from "react";
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
+
 declare global {
   interface Window {
     ethereum?: {
@@ -18,9 +19,7 @@ declare global {
 const ConnectLayout = ({ children }: PropsWithChildren) => {
   const { isConnecting, isDisconnected } = useAccount();
 
-  const {connect}  = useConnect({
-    connector: new InjectedConnector()
-  })
+  const {connect}  = useConnect(  )
 
   useEffect(() => {
     if(!window) return
