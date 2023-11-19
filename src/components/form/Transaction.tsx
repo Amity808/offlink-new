@@ -1,13 +1,12 @@
 'use client'
 import React, { useState, useEffect, useCallback } from "react";
-import celo from "../../../public/images/celo.png";
-import Image from "next/image";
 import { getAllTransaction } from "@/helpers/transaction";
 import Pagination from "@/helpers/pagination";
 import { truuncateAddress } from "@/helpers/truncateAddress";
 import { acceptTransaction, completeOrder } from "@/helpers/offlink";
 import { formatNaira } from "@/helpers/formatNaira";
 import Popup from "reactjs-popup";
+import { formatDate} from "@/helpers/dateFormart"
 
 import 'reactjs-popup/dist/index.css';
 
@@ -95,7 +94,7 @@ const Transaction = () => {
                     {dataFetch.length !== 0 ? dataFetch && dataFetch.map((item: any, index) => (
                       <tr className='text-center mt-4' key={index}>
                         <td className="mt-3">{item.sellerAddress === "" ? "0x000000...0000" : truuncateAddress(item.sellerAddress)}</td>
-                        <td className="mt-3">22-23-2000</td>
+                        <td className="mt-3">{formatDate(item.date_initiated)}</td>
                         <td className="mt-3">{formatNaira(item.fiat_amount)}</td>
                         <td>
                           <Popup trigger={<button className=' btn md:w-[6rem] md:h-[2.5rem] w-[4rem] h-[2rem] text-white items-center justify-center bg-[#4461F2] rounded-lg'>Details</button>} position="top center">
@@ -151,6 +150,7 @@ const Transaction = () => {
         </div>
 
       </>
+      <Pagination page={currentPage} setPage={setCurrentPage} pages={totalPages} activePage={currentPage} visiblePaginatedBtn={5}  />
     </>
   );
 };
