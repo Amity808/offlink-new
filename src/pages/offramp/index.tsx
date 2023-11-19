@@ -102,7 +102,7 @@ const OffRampPage = (): JSX.Element => {
       });
       setSuccessNotification("order placed successfully");
     } catch (error: any) {
-      setErrorNotification(error?.message);
+      // setErrorNotification(error?.message);
       stopLoading();
       return;
     }
