@@ -5,15 +5,15 @@ import { useEffect, type PropsWithChildren } from "react";
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
 
-declare global {
-  interface Window {
-    ethereum?: {
-      isMiniPay?: boolean;
-      request?: (...args: any[]) => Promise<void>;
+// declare global {
+//   interface Window {
+//     ethereum?: {
+//       isMiniPay?: boolean;
+//       request?: (...args: any[]) => Promise<void>;
       
-    };
-  }
- }
+//     };
+//   }
+//  }
  
 
 const ConnectLayout = ({ children }: PropsWithChildren) => {
@@ -24,9 +24,9 @@ const ConnectLayout = ({ children }: PropsWithChildren) => {
   })
 
   useEffect(() => {
-    if(!window) return
-    if(!window?.ethereum) return
-    if(!window?.ethereum?.isMiniPay) return
+    // if(!window) return
+    // if(!window?.ethereum) return
+    // if(!window?.ethereum?.isMiniPay) return
     connect()
   }, [connect])
 
