@@ -21,14 +21,6 @@ const Profile = () => {
     useEffect(() => {
       profile()
     }, [])
-// bankAccount
-// bankName
-// email
-// firstname
-// othername
-// phone
-// surname
-
 
     return (
     <div>
