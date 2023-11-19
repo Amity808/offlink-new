@@ -53,7 +53,7 @@ const OffRampPage = (): JSX.Element => {
       // Handle the case when tokenAmount is not valid (e.g., set a default value)
       return BigInt(0);
     }
-    return parseEther(tokenAmount?.toString() || "0");
+    return parseEther(tokenAmount?.toString() || "1");
   }, [tokenAmount]);
   console.log(tokenAmountinWei)
 
