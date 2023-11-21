@@ -3,7 +3,7 @@ import { getContract } from "@wagmi/core";
 import { erc20ABI } from "wagmi";
 import OfflinkABI from "@/contracts/offlink.json";
 import { useWaitForTransaction } from "wagmi";
-
+import { toast } from "react-toastify";
 import { readContract, writeContract, waitForTransaction } from "@wagmi/core";
 import { OFFRAMP_ADDRESS } from "./constants";
 
@@ -60,7 +60,7 @@ export const cancelTransaction = async (id: string): Promise<any> => {
   
     return result;
   } catch (error) {
-    
+    toast.error("Transaction already accepted by a Trader")
   }
 };
 
@@ -76,6 +76,7 @@ export const acceptTransaction = async (id: string): Promise<any> => {
     return result;
   } catch (error) {
     console.log(error)
+    toast.error("You need buyer role to accept transaction")
   }
 };
 
@@ -105,6 +106,7 @@ export const completeOrder = async (id: string): Promise<any> => {
     return result;
   } catch(error) {
     console.log(error)
+    toast.error("You are not the trader of this transaction")
   }
 };
 
@@ -118,7 +120,9 @@ export const cancelSellOrder = async (id: string): Promise<any> => {
   });
 
   return result;
-  } catch(e) {}
+  } catch(e) {
+    toast.error("You need buyer role to accept transaction")
+  }
 
 };
 
